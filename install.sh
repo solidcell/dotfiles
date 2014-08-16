@@ -30,30 +30,39 @@ link_tmux_dotfile () {
   fi
 }
 
-install_reattach_to_user_namespace () {
-  echo '[tmux] installing reattach-to-user-namespace (for copy/paste support)'
-  if command_exists reattach-to-user-namespace
+install_with_brew () {
+  if command_exists $1
   then
     echo "       ${YELLOW}already installed. skipping...${RESET}"
+    return 0
   else
     if command_exists brew
     then
-      brew install reattach-to-user-namespace
-      echo "       ${GREEN}installed!${RESET}"
+      brew install $1 && echo "       ${GREEN}installed!${RESET}"
+      return $?
     else
       echo "       ${RED}brew is not installed. install brew and re-run this script.${RESET}"
+      return 0
     fi
   fi
 }
 
+install_reattach_to_user_namespace () {
+  echo '[tmux] installing reattach-to-user-namespace (for copy/paste support)'
+  install_with_brew reattach-to-user-namespace
+}
+
+install_tmux () {
+  echo '[tmux] installing tmux'
+  install_with_brew tmux
+  return $?
+}
+
 prepare_tmux () {
   echo '\n[tmux] started'
-  if [ `command -v tmux | wc -l` -eq 1 ]
-  then
+  if install_tmux; then
     link_tmux_dotfile
     install_reattach_to_user_namespace
-  else
-    echo "       ${RED}tmux is not installed. install tmux and re-run this script.${RESET}"
   fi
   echo '[tmux] finished'
 }
