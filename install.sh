@@ -6,9 +6,13 @@ GREEN="${ESC_SEQ}[0;32m"
 YELLOW="${ESC_SEQ}[0;33m"
 RED="${ESC_SEQ}[0;31m"
 
+tmux_dotfile_exists () {
+  test -e $HOME/.tmux.conf
+}
+
 link_tmux_dotfile () {
   echo '[tmux] linking .tmux.conf'
-  if ! [ -e $HOME/.tmux.conf ]
+  if ! tmux_dotfile_exists
   then
     ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
     echo "       ${GREEN}linked!${RESET}"
