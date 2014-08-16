@@ -10,6 +10,15 @@ tmux_dotfile_exists () {
   test -e $HOME/.tmux.conf
 }
 
+brew_command_exists () {
+  if [ `command -v brew | wc -l` -eq 1 ]
+  then
+    return 0
+  else
+    return 1
+  fi
+}
+
 link_tmux_dotfile () {
   echo '[tmux] linking .tmux.conf'
   if ! tmux_dotfile_exists
@@ -23,7 +32,7 @@ link_tmux_dotfile () {
 
 install_reattach_to_user_namespace () {
   echo '[tmux] installing reattach-to-user-namespace (for copy/paste support)'
-  if [ `command -v brew | wc -l` -eq 1 ]
+  if brew_command_exists
   then
     if [ `brew list | grep 'reattach-to-user-namespace' | wc -l` -eq 0 ]
     then
