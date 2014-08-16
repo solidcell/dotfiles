@@ -10,13 +10,21 @@ tmux_dotfile_exists () {
   test -e $HOME/.tmux.conf
 }
 
-brew_command_exists () {
-  if [ `command -v brew | wc -l` -eq 1 ]
+command_exists () {
+  if [ `command -v $1 | wc -l` -eq 1 ]
   then
     return 0
   else
     return 1
   fi
+}
+
+brew_command_exists () {
+  command_exists brew
+}
+
+reattach_to_user_namespace_command_exists () {
+  command_exists reattach-to-user-namespace
 }
 
 link_tmux_dotfile () {
@@ -34,12 +42,12 @@ install_reattach_to_user_namespace () {
   echo '[tmux] installing reattach-to-user-namespace (for copy/paste support)'
   if brew_command_exists
   then
-    if [ `brew list | grep 'reattach-to-user-namespace' | wc -l` -eq 0 ]
+    if reattach_to_user_namespace_command_exists
     then
+      echo "       ${YELLOW}already installed. skipping...${RESET}"
+    else
       brew install reattach-to-user-namespace
       echo "       ${GREEN}installed!${RESET}"
-    else
-      echo "       ${YELLOW}already installed. skipping...${RESET}"
     fi
   else
     echo "       ${RED}brew is not installed. install brew and re-run this script.${RESET}"
