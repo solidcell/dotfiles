@@ -1,0 +1,10 @@
+[alias]
+	ci = commit
+	st = status
+	br = branch
+  co = checkout
+[core]
+	editor = /usr/bin/vim
+[user]
+	name = Jesse Farless
+	email = solidcell@gmail.com

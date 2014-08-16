@@ -6,8 +6,9 @@ GREEN="${ESC_SEQ}[0;32m"
 YELLOW="${ESC_SEQ}[0;33m"
 RED="${ESC_SEQ}[0;31m"
 
-tmux_dotfile_exists () {
-  test -e $HOME/.tmux.conf
+dotfile_exists () {
+  echo "[FIXME] linking .$1"
+  test -e $HOME/.$1
 }
 
 command_exists () {
@@ -21,11 +22,22 @@ command_exists () {
 
 link_tmux_dotfile () {
   echo '[tmux] linking .tmux.conf'
-  if tmux_dotfile_exists
+  if dotfile_exists tmux.conf
   then
-    echo "       ${YELLOW}already exists. skipping...${RESET}"
+    echo "       ${GREEN}already exists. skipping...${RESET}"
   else
     ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
+    echo "       ${GREEN}linked!${RESET}"
+  fi
+}
+
+link_gitconfig_dotfile () {
+  echo '[git] linking .gitconfig'
+  if dotfile_exists gitconfig
+  then
+    echo "       ${GREEN}already exists. skipping...${RESET}"
+  else
+    ln -s $HOME/dotfiles/gitconfig $HOME/.gitconfig
     echo "       ${GREEN}linked!${RESET}"
   fi
 }
@@ -33,7 +45,7 @@ link_tmux_dotfile () {
 install_with_brew () {
   if command_exists $1
   then
-    echo "       ${YELLOW}already installed. skipping...${RESET}"
+    echo "       ${GREEN}already installed. skipping...${RESET}"
     return 0
   else
     if command_exists brew
@@ -52,6 +64,18 @@ install_reattach_to_user_namespace () {
   install_with_brew reattach-to-user-namespace
 }
 
+install_git () {
+  echo '[git] checking for git'
+  if command_exists git
+  then
+    echo "      ${GREEN}already installed.${RESET}"
+    return 0
+  else
+    echo "      ${RED}git is not installed. install git and re-run this script.${RESET}"
+    return 1
+  fi
+}
+
 install_tmux () {
   echo '[tmux] installing tmux'
   install_with_brew tmux
@@ -67,6 +91,15 @@ prepare_tmux () {
   echo '[tmux] finished'
 }
 
+prepare_git () {
+  echo '\n[git] started'
+  if install_git; then
+    link_gitconfig_dotfile
+  fi
+  echo '[git] finished'
+}
+
 echo '******* Installation started *******'
 prepare_tmux
+prepare_git
 echo '\n******* Installation complete *******'
