@@ -13,12 +13,18 @@ then
     echo '       already exists. skipping...'
   fi
   echo '[tmux] installing reattach-to-user-namespace (for copy/paste support)'
-  if [ `brew list | grep 'reattach-to-user-namespace' | wc -l` -eq 0 ]
+  if [ `command -v brew | wc -l` -eq 1 ]
   then
-    brew install reattach-to-user-namespace
-    echo '       installed'
+    if [ `brew list | grep 'reattach-to-user-namespace' | wc -l` -eq 0 ]
+    then
+      brew install reattach-to-user-namespace
+      echo '       installed'
+    else
+      echo '       already installed. skipping...'
+    fi
   else
-    echo '       already installed. skipping...'
+    echo '[tmux] brew is not installed.'
+    echo '       install brew and re-run this script.'
   fi
 else
   echo '[tmux] tmux is not installed.'
