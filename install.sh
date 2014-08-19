@@ -32,24 +32,13 @@ command_exists () {
   fi
 }
 
-link_tmux_dotfile () {
-  print_message 'linking .tmux.conf' true
-  if dotfile_exists tmux.conf
+link_dotfile () {
+  print_message "linking .$1" true
+  if dotfile_exists $1
   then
     print_message "${GREEN}already exists. skipping...${RESET}"
   else
-    ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
-    print_message "GREEN}linked!${RESET}"
-  fi
-}
-
-link_gitconfig_dotfile () {
-  print_message 'linking .gitconfig' true
-  if dotfile_exists gitconfig
-  then
-    print_message "${GREEN}already exists. skipping...${RESET}"
-  else
-    ln -s $HOME/dotfiles/gitconfig $HOME/.gitconfig
+    ln -s $HOME/dotfiles/$1 $HOME/.$1
     print_message "${GREEN}linked!${RESET}"
   fi
 }
@@ -99,7 +88,7 @@ prepare_tmux () {
   echo ''
   print_message 'started' true
   if install_tmux; then
-    link_tmux_dotfile
+    link_dotfile tmux.conf
     install_reattach_to_user_namespace
   fi
   print_message 'finished' true
@@ -110,7 +99,7 @@ prepare_git () {
   echo ''
   print_message 'started' true
   if install_git; then
-    link_gitconfig_dotfile
+    link_dotfile gitconfig
   fi
   print_message 'finished' true
 }
