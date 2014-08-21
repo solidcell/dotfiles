@@ -1,0 +1,7 @@
+--ignore-directory=public/compiled
+--ignore-directory=tmp
+--ignore-directory=log
+
+--ignore-file=match:/.*translations\.js$/
+--ignore-file=match:/.*manifest\.yml$/
+--ignore-file=match:/^tags$/

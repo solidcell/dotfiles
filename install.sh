@@ -65,14 +65,14 @@ install_reattach_to_user_namespace () {
   install_with_brew reattach-to-user-namespace
 }
 
-install_git () {
-  print_message 'checking for git' true
-  if command_exists git
+check_installed () {
+  print_message "checking for $1" true
+  if command_exists $1
   then
     print_message "${GREEN}already installed.${RESET}"
     return 0
   else
-    print_message "${RED}git is not installed. install git and re-run this script.${RESET}"
+    print_message "${RED}$1 is not installed. install $1 and re-run this script.${RESET}"
     return 1
   fi
 }
@@ -98,8 +98,28 @@ prepare_git () {
   CURRENT_PROG=git
   echo ''
   print_message 'started' true
-  if install_git; then
+  if check_installed git; then
     link_dotfile gitconfig
+  fi
+  print_message 'finished' true
+}
+
+prepare_ack () {
+  CURRENT_PROG=ack
+  echo ''
+  print_message 'started' true
+  if check_installed ack; then
+    link_dotfile ackrc
+  fi
+  print_message 'finished' true
+}
+
+prepare_gem () {
+  CURRENT_PROG=gem
+  echo ''
+  print_message 'started' true
+  if check_installed gem; then
+    link_dotfile gemrc
   fi
   print_message 'finished' true
 }
@@ -107,4 +127,6 @@ prepare_git () {
 echo '******* Installation started *******'
 prepare_tmux
 prepare_git
+prepare_ack
+prepare_gem
 echo '\n******* Installation complete *******'
