@@ -124,7 +124,19 @@ prepare_gem () {
   print_message 'finished' true
 }
 
+prepare_vim () {
+  CURRENT_PROG=vim
+  echo ''
+  print_message 'started' true
+  if check_installed vim; then
+    link_dotfile vimrc
+    link_dotfile vim
+  fi
+  print_message 'finished' true
+}
+
 echo '******* Installation started *******'
+prepare_vim
 prepare_tmux
 prepare_git
 prepare_ack
