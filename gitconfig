@@ -3,10 +3,23 @@
 	st = status
 	br = branch
   co = checkout
+	di = diff
+	llog = log --date=local
 [core]
-	editor = /usr/bin/vim
+	editor = vim
+	excludesfile = ~/.gitignore_global
 [user]
 	name = Jesse Farless
 	email = solidcell@gmail.com
 [push]
 	default = matching
+[apply]
+	whitespace = nowarn
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+	ui = auto
+[branch]
+	autosetupmerge = true

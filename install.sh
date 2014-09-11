@@ -111,6 +111,7 @@ prepare_git () {
   print_message 'started' true
   if check_installed git; then
     link_dotfile gitconfig
+    link_dotfile gitignore_global
   fi
   print_message 'finished' true
 }
