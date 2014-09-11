@@ -125,6 +125,7 @@ prepare_gem () {
 }
 
 submodule_init () {
+  print_message 'checking out vim and vim submodules' true
   (cd $HOME/dotfiles && git submodule update --init)
   (cd $HOME/dotfiles/vim && git submodule update --init)
 }
