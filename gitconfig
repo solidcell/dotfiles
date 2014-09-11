@@ -12,7 +12,7 @@
 	name = Jesse Farless
 	email = solidcell@gmail.com
 [push]
-	default = matching
+	default = simple
 [apply]
 	whitespace = nowarn
 [color]
