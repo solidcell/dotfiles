@@ -65,6 +65,17 @@ install_reattach_to_user_namespace () {
   install_with_brew reattach-to-user-namespace
 }
 
+set_zsh_as_default_shell () {
+  print_message 'setting zsh as the default shell' true
+  if [ "$SHELL" == "/bin/zsh" ]
+  then
+    print_message "${GREEN}already set.${RESET}"
+  else
+    chsh -s /bin/zsh
+    print_message "${GREEN}set.${RESET}"
+  fi
+}
+
 check_installed () {
   print_message "checking for $1" true
   if command_exists $1
@@ -151,6 +162,7 @@ prepare_zsh () {
   if check_installed zsh; then
     link_dotfile zshrc
     link_dotfile zsh
+    set_zsh_as_default_shell
   fi
   print_message 'finished' true
 }
