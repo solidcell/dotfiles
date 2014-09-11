@@ -124,10 +124,13 @@ prepare_gem () {
   print_message 'finished' true
 }
 
-submodule_init () {
-  print_message 'checking out vim and vim submodules' true
+checkout_submodules () {
+  CURRENT_PROG=submodules
+  echo ''
+  print_message 'checking out/updating all submodules' true
   (cd $HOME/dotfiles && git submodule update --init)
   (cd $HOME/dotfiles/vim && git submodule update --init)
+  print_message 'finished' true
 }
 
 prepare_vim () {
@@ -135,15 +138,27 @@ prepare_vim () {
   echo ''
   print_message 'started' true
   if check_installed vim; then
-    submodule_init
     link_dotfile vimrc
     link_dotfile vim
   fi
   print_message 'finished' true
 }
 
+prepare_zsh () {
+  CURRENT_PROG=zsh
+  echo ''
+  print_message 'started' true
+  if check_installed zsh; then
+    link_dotfile zshrc
+    link_dotfile zsh
+  fi
+  print_message 'finished' true
+}
+
 echo '******* Installation started *******'
+checkout_submodules
 prepare_vim
+prepare_zsh
 prepare_tmux
 prepare_git
 prepare_ack
