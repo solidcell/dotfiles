@@ -124,11 +124,17 @@ prepare_gem () {
   print_message 'finished' true
 }
 
+submodule_init () {
+  (cd $HOME/dotfiles && git submodule update --init)
+  (cd $HOME/dotfiles/vim && git submodule update --init)
+}
+
 prepare_vim () {
   CURRENT_PROG=vim
   echo ''
   print_message 'started' true
   if check_installed vim; then
+    submodule_init
     link_dotfile vimrc
     link_dotfile vim
   fi
