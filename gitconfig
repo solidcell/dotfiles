@@ -8,3 +8,5 @@
 [user]
 	name = Jesse Farless
 	email = solidcell@gmail.com
+[push]
+	default = matching
