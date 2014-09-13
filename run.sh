@@ -61,6 +61,26 @@ install_with_brew () {
   fi
 }
 
+install_with_npm () {
+  print_message "installing $1" true
+  if command_exists $1
+  then
+    print_message "${GREEN}already installed. skipping...${RESET}"
+    return 0
+  else
+    if command_exists npm
+    then
+      if [ -z "$2" ]; then command="$1"; else command="$2"; fi
+      echo $command
+      npm install -g $2 && print_message "${GREEN}installed!${RESET}"
+      return $?
+    else
+      print_message "${RED}npm is not installed. install npm and re-run this script.${RESET}"
+      return 0
+    fi
+  fi
+}
+
 set_zsh_as_default_shell () {
   print_message 'setting zsh as the default shell' true
   if [ "$SHELL" == "/bin/zsh" ]
@@ -183,6 +203,14 @@ prepare_node () {
   print_message 'finished' true
 }
 
+prepare_coffeescript () {
+  CURRENT_PROG=coffeescript
+  echo ''
+  print_message 'started' true
+  install_with_npm coffee coffee-script
+  print_message 'finished' true
+}
+
 echo '******* Installation started *******'
 checkout_submodules
 prepare_vim
@@ -192,4 +220,5 @@ prepare_git
 prepare_ack
 prepare_gem
 prepare_node
+prepare_coffeescript
 echo '\n******* Installation complete *******'

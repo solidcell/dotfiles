@@ -7,6 +7,7 @@ Supported Programs
 --------------
 
 * ack
+* coffee
 * gem
 * git
 * node
