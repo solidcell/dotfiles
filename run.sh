@@ -44,6 +44,7 @@ link_dotfile () {
 }
 
 install_with_brew () {
+  print_message "installing $1" true
   if command_exists $1
   then
     print_message "${GREEN}already installed. skipping...${RESET}"
@@ -58,11 +59,6 @@ install_with_brew () {
       return 0
     fi
   fi
-}
-
-install_reattach_to_user_namespace () {
-  print_message 'installing reattach-to-user-namespace (for copy/paste support)' true
-  install_with_brew reattach-to-user-namespace
 }
 
 set_zsh_as_default_shell () {
@@ -111,7 +107,7 @@ prepare_tmux () {
   print_message 'started' true
   if install_tmux; then
     link_dotfile tmux.conf
-    install_reattach_to_user_namespace
+    install_with_brew reattach-to-user-namespace
   fi
   print_message 'finished' true
 }
@@ -185,6 +181,14 @@ prepare_zsh () {
   print_message 'finished' true
 }
 
+prepare_node () {
+  CURRENT_PROG=node
+  echo ''
+  print_message 'started' true
+  install_with_brew node
+  print_message 'finished' true
+}
+
 echo '******* Installation started *******'
 checkout_submodules
 prepare_vim
@@ -193,4 +197,5 @@ prepare_tmux
 prepare_git
 prepare_ack
 prepare_gem
+prepare_node
 echo '\n******* Installation complete *******'

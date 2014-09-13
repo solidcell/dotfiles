@@ -9,6 +9,7 @@ Supported Programs
 * ack
 * gem
 * git
+* node
 * tmux
 * vim
 * zsh
