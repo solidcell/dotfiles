@@ -19,7 +19,7 @@ Usage
 ##### Clone the repo
 
 ```sh
-git clone git@github.com:solidcell/dotfiles.git ~/dotfiles
+git -C ~ clone git@github.com:solidcell/dotfiles.git
 ```
 
 ##### Execute the script
@@ -33,6 +33,7 @@ You will be alerted to anything you may have to install manually, such as `git` 
 
 To keep up-to-date, re-execute the script:
 ```sh
+git -C ~/dotfiles pull
 sh ~/dotfiles/run.sh
 ```
 
