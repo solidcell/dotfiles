@@ -42,4 +42,3 @@ sh ~/dotfiles/run.sh
 To Do
 --------------
 * add a post-deploy notes section that mentions stuff like vim needing to have the pathogen command run
-* see if it's possible to remove the zshrc and vimrc and point directly to the real ones (or leave it?)
