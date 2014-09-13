@@ -78,12 +78,11 @@ set_zsh_as_default_shell () {
 
 check_installed () {
   print_message "checking for $1" true
-  if command_exists $1
+  if ensure_installed $1
   then
     print_message "${GREEN}already installed.${RESET}"
     return 0
   else
-    print_message "${RED}$1 is not installed. install $1 and re-run this script.${RESET}"
     return 1
   fi
 }
