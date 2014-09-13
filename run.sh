@@ -95,17 +95,11 @@ ensure_installed () {
   fi
 }
 
-install_tmux () {
-  print_message 'installing tmux' true
-  install_with_brew tmux
-  return $?
-}
-
 prepare_tmux () {
   CURRENT_PROG=tmux
   echo ''
   print_message 'started' true
-  if install_tmux; then
+  if install_with_brew tmux; then
     link_dotfile tmux.conf
     install_with_brew reattach-to-user-namespace
   fi
