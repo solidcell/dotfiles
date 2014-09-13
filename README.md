@@ -18,7 +18,7 @@ Installation
 
 ##### Install Homebrew
 
-* If you haven't already, install [Homebrew](http://brew.sh)
+* If you haven't already, install [Homebrew](http://brew.sh).
 
 ##### Run the installation script
 
@@ -27,3 +27,8 @@ cd ~
 git clone git@github.com:solidcell/dotfiles.git
 sh dotfiles/install.sh
 ```
+
+To Do
+--------------
+* add a post-deploy notes section that mentions stuff like vim needing to have the pathogen command run
+* see if it's possible to remove the zshrc and vimrc and point directly to the real ones (or leave it?)
