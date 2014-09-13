@@ -76,6 +76,7 @@ set_zsh_as_default_shell () {
   fi
 }
 
+# for when the the program is the focus of the current operation
 check_installed () {
   print_message "checking for $1" true
   if ensure_installed $1
@@ -87,6 +88,7 @@ check_installed () {
   fi
 }
 
+# for when the the program is required, but should not be mentioned unless necessary
 ensure_installed () {
   if command_exists $1
   then
@@ -149,8 +151,10 @@ checkout_submodules () {
   CURRENT_PROG=submodules
   echo ''
   print_message 'checking out/updating all submodules' true
-  (cd $HOME/dotfiles && git submodule update --init)
-  (cd $HOME/dotfiles/vim && git submodule update --init)
+  if ensure_installed git; then
+    (cd $HOME/dotfiles && git submodule update --init)
+    (cd $HOME/dotfiles/vim && git submodule update --init)
+  fi
   print_message 'finished' true
 }
 
