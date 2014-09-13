@@ -1,7 +1,7 @@
 dotfiles
 =========
 
-This repo contains dot files/folders for commonly used programs. By running the install.sh script, all dot files/folders will be linked to from the home directory and all necessary commands will be run. Re-running it will keep everything up-to-date.
+This repo contains dot files/folders for commonly used programs. By running `install.sh`, all dot files/folders will be linked to from the home directory and all necessary commands will be run. Re-running it will keep everything up-to-date.
 
 Supported Programs
 --------------
