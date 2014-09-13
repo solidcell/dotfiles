@@ -88,6 +88,16 @@ check_installed () {
   fi
 }
 
+ensure_installed () {
+  if command_exists $1
+  then
+    return 0
+  else
+    print_message "${RED}$1 is not installed. install $1 and re-run this script.${RESET}"
+    return 1
+  fi
+}
+
 install_tmux () {
   print_message 'installing tmux' true
   install_with_brew tmux
@@ -149,9 +159,11 @@ prepare_vim () {
   CURRENT_PROG=vim
   echo ''
   print_message 'started' true
-  if check_installed vim; then
-    link_dotfile vimrc
-    link_dotfile vim
+  if ensure_installed git; then
+    if check_installed vim; then
+      link_dotfile vimrc
+      link_dotfile vim
+    fi
   fi
   print_message 'finished' true
 }
@@ -160,10 +172,12 @@ prepare_zsh () {
   CURRENT_PROG=zsh
   echo ''
   print_message 'started' true
-  if check_installed zsh; then
-    link_dotfile zshrc
-    link_dotfile zsh
-    set_zsh_as_default_shell
+  if ensure_installed git; then
+    if check_installed zsh; then
+      link_dotfile zshrc
+      link_dotfile zsh
+      set_zsh_as_default_shell
+    fi
   fi
   print_message 'finished' true
 }
