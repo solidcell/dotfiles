@@ -20,10 +20,15 @@ Usage
 
 * If you haven't already, install [Homebrew](http://brew.sh).
 
-##### Execute the script
+##### Clone the repo
 
 ```sh
 git clone git@github.com:solidcell/dotfiles.git ~/dotfiles
+```
+
+##### Execute the script
+
+```sh
 sh ~/dotfiles/run.sh
 ```
 
