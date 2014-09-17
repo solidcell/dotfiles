@@ -2,6 +2,9 @@
 --ignore-directory=tmp
 --ignore-directory=log
 
---ignore-file=match:/.*translations\.js$/
---ignore-file=match:/.*manifest\.yml$/
---ignore-file=match:/^tags$/
+--ignore-file=is:translations.js
+--ignore-file=is:manifest.yml
+--ignore-file=is:translations.js
+--ignore-file=is:tags
+
+--ignore-file=ext:sql
