@@ -189,6 +189,7 @@ prepare_zsh () {
   if ensure_installed git; then
     if check_installed zsh; then
       link_dotfile zshrc
+      link_dotfile zshenv
       link_dotfile zsh
       set_zsh_as_default_shell
     fi
