@@ -8,6 +8,7 @@ Supported Programs
 
 * ack
 * coffee
+* ctags
 * gem
 * git
 * node
