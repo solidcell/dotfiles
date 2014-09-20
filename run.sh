@@ -45,7 +45,8 @@ link_dotfile () {
 
 install_with_brew () {
   print_message "installing $1" true
-  if command_exists $1
+  # have command and either no override or override is fine
+  if command_exists $1 && ( [[ -z "$2" ]] || [[ "$2" == 0 ]] )
   then
     print_message "${GREEN}already installed. skipping...${RESET}"
     return 0
@@ -211,9 +212,23 @@ prepare_coffeescript () {
   print_message 'finished' true
 }
 
+prepare_ctags () {
+  CURRENT_PROG=ctags
+  echo ''
+  print_message 'started' true
+  ctags --version &> /dev/null # likely an old version
+  install_with_brew ctags $?
+  print_message 'finished' true
+}
+
+post_run_messages () {
+  print_message "${GREEN}\nopen up a new terminal to be sure to have any changes${RESET}"
+}
+
 echo '******* Installation started *******'
 checkout_submodules
 prepare_vim
+prepare_ctags
 prepare_zsh
 prepare_tmux
 prepare_git
@@ -221,4 +236,5 @@ prepare_ack
 prepare_gem
 prepare_node
 prepare_coffeescript
+post_run_messages
 echo '\n******* Installation complete *******'

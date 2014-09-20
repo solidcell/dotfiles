@@ -23,3 +23,5 @@
 	ui = auto
 [branch]
 	autosetupmerge = true
+[github]
+	user = solidcell
