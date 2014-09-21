@@ -25,6 +25,13 @@ Usage
 git -C ~ clone git@github.com:solidcell/dotfiles.git
 ```
 
+##### Remove (OR BACKUP) any existing dotfiles you currently have
+
+```sh
+rm -fr ~/.ackrc ~/.gemrc ~/.gitconfig ~/.gitignore_global ~/.tmux.conf \
+       ~/.vim/ ~/.vimrc ~/.zsh/ ~/.zshenv ~/.zshrv
+```
+
 ##### Execute the script
 
 ```sh
