@@ -205,6 +205,14 @@ prepare_node () {
   print_message 'finished' true
 }
 
+prepare_ruby () {
+  CURRENT_PROG=ruby
+  echo ''
+  print_message 'started' true
+  install_with_brew ruby
+  print_message 'finished' true
+}
+
 prepare_coffeescript () {
   CURRENT_PROG=coffeescript
   echo ''
@@ -234,6 +242,7 @@ prepare_zsh
 prepare_tmux
 prepare_git
 prepare_ack
+prepare_ruby
 prepare_gem
 prepare_node
 prepare_coffeescript
