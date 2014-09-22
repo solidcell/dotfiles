@@ -2,7 +2,7 @@
 	ci = commit
 	st = status
 	br = branch
-  co = checkout
+	co = checkout
 	di = diff
 	llog = log --date=local
 [core]
