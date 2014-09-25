@@ -230,11 +230,21 @@ prepare_ctags () {
   print_message 'finished' true
 }
 
+prepare_pianobar () {
+  CURRENT_PROG=pianobar
+  echo ''
+  print_message 'started' true
+  install_with_brew pianobar
+  link_dotfile config/pianobar/config
+  print_message 'finished' true
+}
+
 post_run_messages () {
   print_message "${GREEN}\nopen up a new terminal to be sure to have any changes${RESET}"
 }
 
 echo '******* Installation started *******'
+prepare_pianobar
 checkout_submodules
 prepare_vim
 prepare_ctags

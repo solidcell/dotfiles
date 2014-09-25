@@ -12,6 +12,7 @@ Supported Programs
 * gem
 * git
 * node
+* pianobar
 * ruby
 * tmux
 * vim
