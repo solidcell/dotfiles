@@ -227,6 +227,7 @@ prepare_ctags () {
   print_message 'started' true
   ctags --version &> /dev/null # likely an old version
   install_with_brew ctags $?
+  link_dotfile ctags
   print_message 'finished' true
 }
 
@@ -244,7 +245,6 @@ post_run_messages () {
 }
 
 echo '******* Installation started *******'
-prepare_pianobar
 checkout_submodules
 prepare_vim
 prepare_ctags
@@ -256,5 +256,6 @@ prepare_ruby
 prepare_gem
 prepare_node
 prepare_coffeescript
+prepare_pianobar
 post_run_messages
 echo '\n******* Installation complete *******'
