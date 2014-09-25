@@ -7,6 +7,7 @@ Supported Programs
 --------------
 
 * ack
+* center-im
 * coffee
 * ctags
 * gem
@@ -30,7 +31,7 @@ git -C ~ clone git@github.com:solidcell/dotfiles.git
 ##### Remove (OR BACKUP) any existing dotfiles you currently have
 
 ```sh
-rm -fr ~/.ackrc ~/.config/pianobar/config ~/.ctags ~/.gemrc \
+rm -fr ~/.ackrc ~/centerim ~/.config/pianobar/config ~/.ctags ~/.gemrc \
        ~/.gitconfig ~/.gitignore_global ~/.tmux.conf ~/.vim/ \
        ~/.vimrc ~/.zsh/ ~/.zshenv ~/.zshrv
 ```

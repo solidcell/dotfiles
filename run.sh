@@ -240,6 +240,15 @@ prepare_pianobar () {
   print_message 'finished' true
 }
 
+prepare_centerim () {
+  CURRENT_PROG=center-im
+  echo ''
+  print_message 'started' true
+  install_with_brew center-im
+  link_dotfile centerim
+  print_message 'finished' true
+}
+
 post_run_messages () {
   print_message "${GREEN}\nopen up a new terminal to be sure to have any changes${RESET}"
 }
@@ -257,5 +266,6 @@ prepare_gem
 prepare_node
 prepare_coffeescript
 prepare_pianobar
+prepare_centerim
 post_run_messages
 echo '\n******* Installation complete *******'
