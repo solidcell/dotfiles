@@ -6,17 +6,17 @@ This repo contains dot files/folders for commonly used programs. By executing `r
 Supported Programs
 --------------
 
-* ack
-* coffee
-* ctags
-* gem
-* git
-* node
-* pianobar
-* ruby
-* tmux
-* vim
-* zsh
+* [ack](http://beyondgrep.com/)
+* [coffee](http://coffeescript.org/)
+* [ctags](http://ctags.sourceforge.net/)
+* [gem](https://rubygems.org/)
+* [git](http://git-scm.com/)
+* [node](http://nodejs.org/)
+* [pianobar](https://github.com/PromyLOPh/pianobar/)
+* [ruby](https://www.ruby-lang.org/)
+* [tmux](http://tmux.sourceforge.net/)
+* [vim](http://www.vim.org/)
+* [zsh](http://www.zsh.org/)
 
 Usage
 --------------
