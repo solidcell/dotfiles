@@ -5,6 +5,7 @@ RESET="${ESC_SEQ}[0m"
 GREEN="${ESC_SEQ}[0;32m"
 YELLOW="${ESC_SEQ}[0;33m"
 RED="${ESC_SEQ}[0;31m"
+BLUE="${ESC_SEQ}[0;34m"
 
 print_message () {
   tag="[${CURRENT_PROG}]"
@@ -242,7 +243,10 @@ prepare_pianobar () {
 }
 
 post_run_messages () {
-  print_message "${GREEN}\nopen up a new terminal to be sure to have any changes${RESET}"
+  CURRENT_PROG=
+  echo ''
+  print_message "- ${GREEN}open up a new terminal to be sure to have any changes${RESET}"
+  print_message "- ${GREEN}in vim, run this once: ${BLUE}:call pathogen#helptags()${RESET}"
 }
 
 echo '******* Installation started *******'

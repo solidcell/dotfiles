@@ -49,7 +49,3 @@ To keep up-to-date, re-execute the script:
 git -C ~/dotfiles pull
 sh ~/dotfiles/run.sh
 ```
-
-To Do
---------------
-* add a post-deploy notes section that mentions stuff like vim needing to have the pathogen command run
