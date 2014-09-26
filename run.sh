@@ -236,6 +236,7 @@ prepare_pianobar () {
   echo ''
   print_message 'started' true
   install_with_brew pianobar
+  mkdir -p $HOME/.config/pianobar
   link_dotfile config/pianobar/config
   print_message 'finished' true
 }
