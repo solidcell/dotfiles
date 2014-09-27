@@ -73,8 +73,7 @@ install_with_npm () {
     if command_exists npm
     then
       if [ -z "$2" ]; then command="$1"; else command="$2"; fi
-      echo $command
-      npm install -g $2 && print_message "${GREEN}installed!${RESET}"
+      npm install -g $command && print_message "${GREEN}installed!${RESET}"
       return $?
     else
       print_message "${RED}npm is not installed. install npm and re-run this script.${RESET}"
