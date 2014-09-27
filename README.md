@@ -13,6 +13,7 @@ Supported Programs
 * [git](http://git-scm.com/)
 * [node](http://nodejs.org/)
 * [pianobar](https://github.com/PromyLOPh/pianobar/)
+* [rbenv](https://github.com/sstephenson/rbenv)
 * [ruby](https://www.ruby-lang.org/)
 * [tmux](http://tmux.sourceforge.net/)
 * [vim](http://www.vim.org/)

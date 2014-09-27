@@ -208,8 +208,12 @@ prepare_node () {
 prepare_ruby () {
   CURRENT_PROG=ruby
   echo ''
+  # add a new install_with_rbenv
   print_message 'started' true
-  install_with_brew ruby
+  print_message "installing ruby 2.0.0-p576" true
+  rbenv install --skip-existing 2.0.0-p576
+  print_message "finished" true
+  link_dotfile rbenv/version
   print_message 'finished' true
 }
 
@@ -241,6 +245,15 @@ prepare_pianobar () {
   print_message 'finished' true
 }
 
+prepare_rbenv () {
+  CURRENT_PROG=rbenv
+  echo ''
+  print_message 'started' true
+  install_with_brew rbenv
+  install_with_brew ruby-build
+  print_message 'finished' true
+}
+
 post_run_messages () {
   CURRENT_PROG=
   echo ''
@@ -256,6 +269,7 @@ prepare_zsh
 prepare_tmux
 prepare_git
 prepare_ack
+prepare_rbenv
 prepare_ruby
 prepare_gem
 prepare_node
