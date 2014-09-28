@@ -46,8 +46,7 @@ link_dotfile () {
 
 install_with_brew () {
   print_message "installing $1" true
-  # have command and either no override or override is fine
-  if command_exists $1 && ( [[ -z "$2" ]] || [[ "$2" == 0 ]] )
+  if brew list | grep -E "\<$1\>([^-]|$)" > /dev/null
   then
     print_message "${GREEN}already installed. skipping...${RESET}"
     return 0
@@ -229,8 +228,7 @@ prepare_ctags () {
   CURRENT_PROG=ctags
   echo ''
   print_message 'started' true
-  ctags --version &> /dev/null # likely an old version
-  install_with_brew ctags $?
+  install_with_brew ctags
   link_dotfile ctags
   print_message 'finished' true
 }
@@ -251,6 +249,8 @@ prepare_rbenv () {
   print_message 'started' true
   install_with_brew rbenv
   install_with_brew ruby-build
+  install_with_brew rbenv-default-gems
+  install_with_brew rbenv-gem-rehash
   print_message 'finished' true
 }
 
