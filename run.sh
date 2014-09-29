@@ -80,6 +80,25 @@ install_with_npm () {
   fi
 }
 
+install_with_gem () {
+  print_message "installing $1" true
+  if gem list | grep -E "\<$1\>([^-]|$)" > /dev/null
+  then
+    print_message "${GREEN}already installed. skipping...${RESET}"
+    return 0
+  else
+    if command_exists gem
+    then
+      if [ -z "$2" ]; then command="$1"; else command="$2"; fi
+      gem install $command && print_message "${GREEN}installed!${RESET}"
+      return $?
+    else
+      print_message "${RED}gem is not installed. install gem and re-run this script.${RESET}"
+      return 0
+    fi
+  fi
+}
+
 set_zsh_as_default_shell () {
   print_message 'setting zsh as the default shell' true
   if [ "$SHELL" == "/bin/zsh" ]
@@ -121,6 +140,16 @@ prepare_tmux () {
   if install_with_brew tmux; then
     link_dotfile tmux.conf
     install_with_brew reattach-to-user-namespace
+  fi
+  print_message 'finished' true
+}
+
+prepare_tmuxinator () {
+  CURRENT_PROG=tmuxinator
+  echo ''
+  print_message 'started' true
+  if install_with_gem tmuxinator; then
+    link_dotfile tmuxinator
   fi
   print_message 'finished' true
 }
@@ -269,6 +298,7 @@ prepare_vim
 prepare_ctags
 prepare_zsh
 prepare_tmux
+prepare_tmuxinator
 prepare_git
 prepare_ack
 prepare_node

@@ -16,6 +16,7 @@ Supported Programs
 * [rbenv](https://github.com/sstephenson/rbenv)
 * [ruby](https://www.ruby-lang.org/)
 * [tmux](http://tmux.sourceforge.net/)
+* [tmuxinator](https://github.com/tmuxinator/tmuxinator)
 * [vim](http://www.vim.org/)
 * [zsh](http://www.zsh.org/)
 
