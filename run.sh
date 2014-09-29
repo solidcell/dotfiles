@@ -278,6 +278,7 @@ prepare_rbenv () {
   install_with_brew rbenv
   install_with_brew ruby-build
   install_with_brew rbenv-default-gems
+  link_dotfile rbenv/default-gems
   install_with_brew rbenv-gem-rehash
   print_message 'finished' true
 }
