@@ -64,15 +64,14 @@ install_with_brew () {
 
 install_with_npm () {
   print_message "installing $1" true
-  if command_exists $1
+  if npm --global list | grep -E "\<$1\>([^-]|$)" > /dev/null
   then
     print_message "${GREEN}already installed. skipping...${RESET}"
     return 0
   else
     if command_exists npm
     then
-      if [ -z "$2" ]; then command="$1"; else command="$2"; fi
-      npm install -g $command && print_message "${GREEN}installed!${RESET}"
+      npm install -g $1 && print_message "${GREEN}installed!${RESET}"
       return $?
     else
       print_message "${RED}npm is not installed. install npm and re-run this script.${RESET}"
@@ -217,10 +216,10 @@ prepare_ruby () {
 }
 
 prepare_coffeescript () {
-  CURRENT_PROG=coffeescript
+  CURRENT_PROG=coffee-script
   echo ''
   print_message 'started' true
-  install_with_npm coffee coffee-script
+  install_with_npm coffee-script
   print_message 'finished' true
 }
 
@@ -263,15 +262,15 @@ post_run_messages () {
 
 echo '******* Installation started *******'
 checkout_submodules
+prepare_rbenv
+prepare_ruby
+prepare_gem
 prepare_vim
 prepare_ctags
 prepare_zsh
 prepare_tmux
 prepare_git
 prepare_ack
-prepare_rbenv
-prepare_ruby
-prepare_gem
 prepare_node
 prepare_coffeescript
 prepare_pianobar

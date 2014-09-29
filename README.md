@@ -7,7 +7,7 @@ Supported Programs
 --------------
 
 * [ack](http://beyondgrep.com/)
-* [coffee](http://coffeescript.org/)
+* [coffee-script](http://coffeescript.org/)
 * [ctags](http://ctags.sourceforge.net/)
 * [gem](https://rubygems.org/)
 * [git](http://git-scm.com/)
