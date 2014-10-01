@@ -1,2 +1,3 @@
 audio_quality = high
 user = solidcell@gmail.com
+fifo = /Users/jesse/.config/pianobar/ctl
