@@ -51,3 +51,9 @@ To keep up-to-date, re-execute the script:
 git -C ~/dotfiles pull
 sh ~/dotfiles/run.sh
 ```
+
+To Do
+--------------
+* pianobar stops working at the end of some songs. investigate.
+* add a wrapper for the installation of a ruby version
+* add a wrapper for the creation of the pianobar fifo
