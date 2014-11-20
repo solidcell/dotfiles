@@ -1,3 +1,4 @@
 audio_quality = high
 user = solidcell@gmail.com
 fifo = ~/.config/pianobar/ctl
+event_command = /Users/jesse/.config/pianobar/event_command.rb

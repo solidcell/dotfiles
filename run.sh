@@ -268,6 +268,8 @@ prepare_pianobar () {
   install_with_brew pianobar
   mkdir -p $HOME/.config/pianobar
   link_dotfile config/pianobar/config
+  link_dotfile config/pianobar/event_command.rb
+  link_dotfile config/pianobar/echo-current-song.sh
   mkfifo config/pianobar/ctl > /dev/null
   link_dotfile config/pianobar/ctl
   print_message 'finished' true
