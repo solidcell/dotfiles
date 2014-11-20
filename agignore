@@ -1,0 +1,10 @@
+public/compiled/
+tmp/
+log/
+
+translations.js
+manifest.yml
+translations.js
+tags
+
+*.sql

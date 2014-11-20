@@ -15,6 +15,7 @@ Supported Programs
 * [pianobar](https://github.com/PromyLOPh/pianobar/)
 * [rbenv](https://github.com/sstephenson/rbenv)
 * [ruby](https://www.ruby-lang.org/)
+* [ag](https://github.com/ggreer/the_silver_searcher)
 * [tmux](http://tmux.sourceforge.net/)
 * [tmuxinator](https://github.com/tmuxinator/tmuxinator)
 * [vim](http://www.vim.org/)
@@ -32,7 +33,7 @@ git -C ~ clone git@github.com:solidcell/dotfiles.git
 ##### Remove (OR BACKUP) any existing dotfiles you currently have
 
 ```sh
-rm -fr ~/.ackrc ~/.config/pianobar/config ~/.ctags ~/.gemrc \
+rm -fr ~/.ackrc ~/.agignore ~/.config/pianobar/config ~/.ctags ~/.gemrc \
        ~/.gitconfig ~/.gitignore_global ~/.tmux.conf ~/.vim/ \
        ~/.vimrc ~/.zsh/ ~/.zshenv ~/.zshrv
 ```
@@ -54,6 +55,5 @@ sh ~/dotfiles/run.sh
 
 To Do
 --------------
-* pianobar stops working at the end of some songs. investigate.
 * add a wrapper for the installation of a ruby version
 * add a wrapper for the creation of the pianobar fifo

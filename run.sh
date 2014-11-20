@@ -285,6 +285,15 @@ prepare_rbenv () {
   print_message 'finished' true
 }
 
+prepare_the_silver_searcher () {
+  CURRENT_PROG=ag
+  echo ''
+  print_message 'started' true
+  install_with_brew the_silver_searcher
+  link_dotfile agignore
+  print_message 'finished' true
+}
+
 post_run_messages () {
   CURRENT_PROG=
   echo ''
@@ -307,5 +316,6 @@ prepare_ack
 prepare_node
 prepare_coffeescript
 prepare_pianobar
+prepare_the_silver_searcher
 post_run_messages
 echo '\n******* Installation complete *******'
