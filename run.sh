@@ -103,7 +103,7 @@ set_zsh_as_default_shell () {
   print_message 'setting zsh as the default shell' true
   if [ "$SHELL" == "/bin/zsh" ]
   then
-    print_message "${GREEN}already set.${RESET}"
+    print_message "${GREEN}already set. skipping...${RESET}"
   else
     chsh -s /bin/zsh
     print_message "${GREEN}set.${RESET}"
@@ -115,7 +115,7 @@ check_installed () {
   print_message "checking for $1" true
   if ensure_installed $1
   then
-    print_message "${GREEN}already installed.${RESET}"
+    print_message "${GREEN}ok${RESET}"
     return 0
   else
     return 1
@@ -232,14 +232,20 @@ prepare_node () {
   print_message 'finished' true
 }
 
+install_ruby () {
+  print_message "installing ruby $1" true
+  if [ `rbenv versions | grep $1 | wc -l` -eq 1 ]; then
+    print_message "${GREEN}already installed. skipping...${RESET}"
+  else
+    rbenv install --skip-existing $1
+  fi
+}
+
 prepare_ruby () {
   CURRENT_PROG=ruby
   echo ''
-  # add a new install_with_rbenv
   print_message 'started' true
-  print_message "installing ruby 2.0.0-p576" true
-  rbenv install --skip-existing 2.0.0-p576
-  print_message "finished" true
+  install_ruby $(cat $HOME/dotfiles/rbenv/version)
   link_dotfile rbenv/version
   print_message 'finished' true
 }
