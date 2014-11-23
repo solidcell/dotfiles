@@ -270,6 +270,8 @@ prepare_pianobar () {
   link_dotfile config/pianobar/config
   link_dotfile config/pianobar/event_command.rb
   link_dotfile config/pianobar/echo-current-song.sh
+  save_pandora_password
+  link_dotfile config/pianobar/password.gpg
   mkfifo config/pianobar/ctl > /dev/null
   link_dotfile config/pianobar/ctl
   print_message 'finished' true
@@ -296,6 +298,35 @@ prepare_the_silver_searcher () {
   print_message 'finished' true
 }
 
+prepare_gpg () {
+  CURRENT_PROG=gpg
+  echo ''
+  print_message 'started' true
+  install_with_brew gnupg
+  generate_gpg_key
+  print_message 'finished' true
+}
+
+generate_gpg_key () {
+  print_message "generating GPG key" true
+  if [ ! -f ~/.gnupg/pubring.gpg ]; then
+    gpg --batch --gen-key $HOME/dotfiles/gpg-key-script && print_message "${GREEN}generated!${RESET}"
+  else
+    print_message "${GREEN}already generated. skipping...${RESET}"
+  fi
+}
+
+save_pandora_password () {
+  print_message "encrypting Pandora.com password" true
+  if [ ! -f config/pianobar/password.gpg ]; then
+    echo 'Pandora.com password:'
+    read -s pandora_password
+    echo $pandora_password | gpg --output $HOME/dotfiles/config/pianobar/password.gpg --encrypt --recipient solidcell@gmail.com
+  else
+    print_message "${GREEN}already encrypted. skipping...${RESET}"
+  fi
+}
+
 post_run_messages () {
   CURRENT_PROG=
   echo ''
@@ -317,6 +348,7 @@ prepare_git
 prepare_ack
 prepare_node
 prepare_coffeescript
+prepare_gpg
 prepare_pianobar
 prepare_the_silver_searcher
 post_run_messages

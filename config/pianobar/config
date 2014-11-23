@@ -1,4 +1,5 @@
 audio_quality = high
 user = solidcell@gmail.com
+password_command = gpg --decrypt ~/.config/pianobar/password.gpg
 fifo = ~/.config/pianobar/ctl
 event_command = /Users/jesse/.config/pianobar/event_command.rb
