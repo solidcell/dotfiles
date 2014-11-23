@@ -37,7 +37,7 @@ link_dotfile () {
   print_message "linking .$1" true
   if dotfile_exists $1
   then
-    print_message "${GREEN}already exists. skipping...${RESET}"
+    print_message "${GREEN}already linked. skipping...${RESET}"
   else
     ln -s $HOME/dotfiles/$1 $HOME/.$1
     print_message "${GREEN}linked!${RESET}"
@@ -267,6 +267,15 @@ prepare_ctags () {
   print_message 'finished' true
 }
 
+create_pianobar_fifo () {
+  print_message "creating pianobar FIFO" true
+  if [ ! -e $HOME/.config/pianobar/ctl ]; then
+    mkfifo $HOME/.config/pianobar/ctl > /dev/null && print_message "${GREEN}created!${RESET}"
+  else
+    print_message "${GREEN}already created. skipping...${RESET}"
+  fi
+}
+
 prepare_pianobar () {
   CURRENT_PROG=pianobar
   echo ''
@@ -277,9 +286,7 @@ prepare_pianobar () {
   link_dotfile config/pianobar/event_command.rb
   link_dotfile config/pianobar/echo-current-song.sh
   save_pandora_password
-  link_dotfile config/pianobar/password.gpg
-  mkfifo config/pianobar/ctl > /dev/null
-  link_dotfile config/pianobar/ctl
+  create_pianobar_fifo
   print_message 'finished' true
 }
 
@@ -324,10 +331,11 @@ generate_gpg_key () {
 
 save_pandora_password () {
   print_message "encrypting Pandora.com password" true
-  if [ ! -f config/pianobar/password.gpg ]; then
+  if [ ! -f $HOME/.config/pianobar/password.gpg ]; then
     echo 'Pandora.com password:'
     read -s pandora_password
-    echo $pandora_password | gpg --output $HOME/dotfiles/config/pianobar/password.gpg --encrypt --recipient solidcell@gmail.com
+    echo $pandora_password | gpg --output $HOME/.config/pianobar/password.gpg --encrypt --recipient solidcell@gmail.com
+    print_message "${GREEN}encrypted!${RESET}"
   else
     print_message "${GREEN}already encrypted. skipping...${RESET}"
   fi
