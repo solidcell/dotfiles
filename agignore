@@ -1,6 +1,7 @@
 public/compiled/
 tmp/
 log/
+bundle/
 
 translations.js
 manifest.yml
