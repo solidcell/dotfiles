@@ -1,9 +1,9 @@
 name: main
 root: ~/
 windows:
+  - pianobar: pianobar
   - main:
       layout: 4129,204x47,0,0[204x38,0,0,0,204x8,0,39,1]
       panes:
         -
         -
-  - pianobar: pianobar
