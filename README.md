@@ -7,6 +7,7 @@ Supported Programs
 --------------
 
 * [ack](http://beyondgrep.com/)
+* [ag](https://github.com/ggreer/the_silver_searcher)
 * [coffee-script](http://coffeescript.org/)
 * [ctags](http://ctags.sourceforge.net/)
 * [gem](https://rubygems.org/)
@@ -15,7 +16,6 @@ Supported Programs
 * [pianobar](https://github.com/PromyLOPh/pianobar/)
 * [rbenv](https://github.com/sstephenson/rbenv)
 * [ruby](https://www.ruby-lang.org/)
-* [ag](https://github.com/ggreer/the_silver_searcher)
 * [tmux](http://tmux.sourceforge.net/)
 * [tmuxinator](https://github.com/tmuxinator/tmuxinator)
 * [vim](http://www.vim.org/)
