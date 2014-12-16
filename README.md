@@ -11,6 +11,7 @@ Supported Programs
 * [coffee-script](http://coffeescript.org/)
 * [ctags](http://ctags.sourceforge.net/)
 * [gem](https://rubygems.org/)
+* [gem-ctags](https://github.com/tpope/gem-ctags)
 * [git](http://git-scm.com/)
 * [node](http://nodejs.org/)
 * [pianobar](https://github.com/PromyLOPh/pianobar/)
