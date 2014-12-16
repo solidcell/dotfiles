@@ -52,3 +52,22 @@ To keep up-to-date, re-execute the script:
 git -C ~/dotfiles pull
 sh ~/dotfiles/run.sh
 ```
+
+Notes
+--------------
+
+##### Local Tags
+
+For existing git repos, re-init to get hooks which update tags:
+```sh
+git init
+```
+New repos will automatically get these hooks by default.
+
+##### Gem Tags
+
+For existing gems, run this once to get tags for all gems:
+```sh
+gem gem-ctags
+```
+Future gem installs will, however, automatically generate tags.
