@@ -27,4 +27,4 @@
 [github]
 	user = solidcell
 [init]
-	templatedir = ~/dotfiles/git_template
+	templatedir = ~/.git_template
