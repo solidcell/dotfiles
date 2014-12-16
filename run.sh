@@ -161,6 +161,7 @@ prepare_git () {
   if check_installed git; then
     link_dotfile gitconfig
     link_dotfile gitignore_global
+    link_dotfile git_template
   fi
   print_message 'finished' true
 }

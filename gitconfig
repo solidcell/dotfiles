@@ -5,6 +5,7 @@
 	co = checkout
 	di = diff
 	llog = log --date=local
+	ctags = !.git/hooks/background_ctags
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
@@ -25,3 +26,5 @@
 	autosetupmerge = true
 [github]
 	user = solidcell
+[init]
+	templatedir = ~/dotfiles/git_template
