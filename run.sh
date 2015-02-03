@@ -312,6 +312,7 @@ prepare_the_silver_searcher () {
   print_message 'finished' true
 }
 
+# Needed for clang_complete vim plugin
 prepare_llvm () {
   CURRENT_PROG=llvm
   echo ''
