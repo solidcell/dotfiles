@@ -53,7 +53,7 @@ install_with_brew () {
   else
     if command_exists brew
     then
-      brew install $1 && print_message "${GREEN}installed!${RESET}"
+      brew install $1 $2 && print_message "${GREEN}installed!${RESET}"
       return $?
     else
       print_message "${RED}brew is not installed. install brew and re-run this script.${RESET}"
@@ -312,6 +312,14 @@ prepare_the_silver_searcher () {
   print_message 'finished' true
 }
 
+prepare_llvm () {
+  CURRENT_PROG=llvm
+  echo ''
+  print_message 'started' true
+  install_with_brew llvm --with-clang
+  print_message 'finished' true
+}
+
 prepare_gpg () {
   CURRENT_PROG=gpg
   echo ''
@@ -366,5 +374,6 @@ prepare_coffeescript
 prepare_gpg
 prepare_pianobar
 prepare_the_silver_searcher
+prepare_llvm
 post_run_messages
 echo '\n******* Installation complete *******'
