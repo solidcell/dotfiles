@@ -319,6 +319,14 @@ prepare_llvm () {
   print_message 'finished' true
 }
 
+prepare_xvim () {
+  CURRENT_PROG=xvim
+  echo ''
+  print_message 'started' true
+  link_dotfile xvimrc
+  print_message 'finished' true
+}
+
 prepare_gpg () {
   CURRENT_PROG=gpg
   echo ''
@@ -374,5 +382,6 @@ prepare_gpg
 prepare_pianobar
 prepare_the_silver_searcher
 prepare_llvm
+prepare_xvim
 post_run_messages
 echo '\n******* Installation complete *******'
