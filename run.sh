@@ -191,8 +191,7 @@ checkout_submodules () {
   echo ''
   print_message 'checking out/updating all submodules' true
   if ensure_installed git; then
-    (cd $HOME/dotfiles && git submodule update --init)
-    (cd $HOME/dotfiles/vim && git submodule update --init)
+    (cd $HOME/dotfiles && git submodule update --init --recursive)
   fi
   print_message 'finished' true
 }
